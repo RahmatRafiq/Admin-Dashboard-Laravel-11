@@ -8,44 +8,59 @@ use Illuminate\Http\Request;
 class AboutAppController extends Controller
 {
     /**
-     * Display and edit the profile.
+     * Display the profiles.
      */
     public function index()
     {
-        // Assuming there's only one profile to be edited
+        // Mengambil semua entri AboutApp
         $aboutApp = AboutApp::first();
 
-        return view('applications.mbkm.about-mbkms.index', compact('AboutApp'));
+        return view('admin.about-app.index', compact('aboutApp'));
     }
 
     /**
      * Update the profile in storage.
      */
-    public function update(Request $request)
+    public function update(Request $request, $id)
     {
         $request->validate([
-            'program_name' => 'required|string|max:255',
+            'title' => 'required|string|max:255',
             'description' => 'required|string',
-            'duration' => 'nullable|string|max:255',
-            'eligibility' => 'nullable|string|max:255',
-            'benefits' => 'nullable|string|max:255',
             'contact_email' => 'nullable|string|email|max:255',
             'contact_phone' => 'nullable|string|max:20',
             'contact_address' => 'nullable|string|max:255',
         ]);
 
-        // Assuming there's only one profile to be edited
-        $aboutApp = AboutApp::first();
+        $aboutApp = AboutApp::find($id);
 
         if ($aboutApp) {
             $aboutApp->update($request->all());
-            $message = 'About MBKM updated successfully.';
+            $message = 'About App updated successfully.';
         } else {
             AboutApp::create($request->all());
-            $message = 'About MBKM created successfully.';
+            $message = 'About App created successfully.';
         }
 
-        return redirect()->route('about-mbkms.index')
+        return redirect()->route('about-app.index')
             ->with('success', $message);
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(Request $request)
+    {
+        $request->validate([
+            'title' => 'required|string|max:255',
+            'description' => 'required|string',
+            'contact_email' => 'nullable|string|email|max:255',
+            'contact_phone' => 'nullable|string|max:20',
+            'contact_address' => 'nullable|string|max:255',
+        ]);
+
+        AboutApp::create($request->all());
+
+        return redirect()->route('about-app.index')
+            ->with('success', 'About App created successfully.');
     }
 }

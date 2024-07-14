@@ -8,7 +8,7 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/admin', [\App\Http\Controllers\DashboardController::class, 'dashboardAdmin'])->name('dashboard.admin');
 
-    Route::resource('mbkm/about-app', \App\Http\Controllers\AboutMbkmController::class);
+    Route::resource('mbkm/about-app', \App\Http\Controllers\AboutAppController::class);
 
     Route::get('admin/profile', [\App\Http\Controllers\ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('admin/profile', [\App\Http\Controllers\ProfileController::class, 'update'])->name('profile.update');

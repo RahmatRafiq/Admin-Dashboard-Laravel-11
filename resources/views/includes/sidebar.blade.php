@@ -1,17 +1,15 @@
 <nav id="sidebar" class="sidebar-wrapper">
-    <!-- Sidebar menu starts -->
     <div class="sidebarMenuScroll custom-scrollbar">
         <ul class="sidebar-menu">
             <li class="{{ request()->routeIs('dashboard') ? 'active current-page' : '' }}">
                 <a href="{{ route('dashboard') }}">
-                    <i class="bi bi-speedometer2"></i> <!-- Ikon baru untuk Dashboard -->
+                    <i class="bi bi-speedometer2"></i>
                     <span class="menu-text">Dashboard</span>
                 </a>
             </li>
-            {{-- Admin dashboard --}}
             <li class="treeview {{ request()->is('mbkm/admin/role-permissions*') ? 'active current-page open' : '' }}">
                 <a href="#" class="treeview-toggle">
-                    <i class="bi bi-person-gear"></i> <!-- Ikon baru untuk Manajemen Pengguna -->
+                    <i class="bi bi-person-gear"></i>
                     <span class="menu-text">Manajemen Pengguna</span>
                 </a>
                 <ul class="treeview-menu"
@@ -26,10 +24,17 @@
                         <a href="{{ route('user.index') }}">Users</a>
                     </li>
                     <li class="{{ request()->routeIs('about-app.index') ? 'active-sub' : '' }}">
-                        <a href="{{ route('about-app.index') }}">About MBKM</a>
+                        <a href="{{ route('about-app.index') }}">Tentang Aplikasi</a>
                     </li>
                 </ul>
+                <li class="{{ request()->routeIs('profile.edit') ? 'active current-page' : '' }}">
+                    <a href="{{ route('profile.edit') }}">
+                        <i class="bi bi-person"></i>
+                        <span class="menu-text">Manajemen Profil</span>
+                    </a>
+                </li>
             </li>
+
             {{-- End Admin dashboard --}}
         </ul>
     </div>

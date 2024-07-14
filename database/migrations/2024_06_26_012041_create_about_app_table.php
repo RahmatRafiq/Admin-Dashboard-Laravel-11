@@ -13,11 +13,8 @@ return new class extends Migration
     {
         Schema::create('about_app', function (Blueprint $table) {
             $table->id();
-            $table->string('program_name');
+            $table->string('title');
             $table->text('description');
-            $table->string('duration')->nullable(); // Duration of the program
-            $table->string('eligibility')->nullable(); // Eligibility criteria for the program
-            $table->string('benefits')->nullable(); // Benefits of the program
             $table->string('contact_email')->nullable(); // Contact email for inquiries
             $table->string('contact_phone')->nullable(); // Contact phone number for inquiries
             $table->string('contact_address')->nullable(); // Contact address for inquiries

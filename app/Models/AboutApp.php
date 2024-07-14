@@ -9,15 +9,13 @@ class AboutApp extends Model
 {
     use HasFactory;
 
+    protected $table = 'about_app';
+
     protected $fillable = [
-        'program_name',
+        'title',
         'description',
-        'duration',
-        'eligibility',
-        'benefits',
         'contact_email',
         'contact_phone',
         'contact_address',
     ];
-    
 }
