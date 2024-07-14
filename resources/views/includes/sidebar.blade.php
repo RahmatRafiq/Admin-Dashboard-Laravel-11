@@ -15,7 +15,7 @@
                     <span class="menu-text">Manajemen Pengguna</span>
                 </a>
                 <ul class="treeview-menu"
-                    style="{{ request()->is('mbkm/admin/role-permissions*') ? 'display: block;' : 'display: none;' }}">
+                    style="{{ request()->is('admin/role-permissions*') ? 'display: block;' : 'display: none;' }}">
                     <li class="{{ request()->routeIs('permission.index') ? 'active-sub' : '' }}">
                         <a href="{{ route('permission.index') }}">Permissions</a>
                     </li>
@@ -25,8 +25,8 @@
                     <li class="{{ request()->routeIs('user.index') ? 'active-sub' : '' }}">
                         <a href="{{ route('user.index') }}">Users</a>
                     </li>
-                    <li class="{{ request()->routeIs('about-mbkms.index') ? 'active-sub' : '' }}">
-                        <a href="{{ route('about-mbkms.index') }}">About MBKM</a>
+                    <li class="{{ request()->routeIs('about-app.index') ? 'active-sub' : '' }}">
+                        <a href="{{ route('about-app.index') }}">About MBKM</a>
                     </li>
                 </ul>
             </li>
